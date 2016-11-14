@@ -1,6 +1,5 @@
 "use strict";
 import React, { PropTypes } from "react";
-import ScrollToTop from "react-scroll-up";
 import {connect} from "react-redux";
 
 class App extends React.Component {
@@ -15,9 +14,6 @@ class App extends React.Component {
         }
         return (
             <div>
-                <ScrollToTop showUnder={160}>
-                    <img src="/statics/scrollUp.png"/>
-                </ScrollToTop>
                 {loadingSpinner}
                 {this.props.children}
             </div>

@@ -17,6 +17,31 @@
     height: 45px;
 }
 
+.descriptionText {
+    font-size: 17px;
+}
+
+.descriptionTextSectionHeading {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.descriptionDiv {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.sampleInputDiv {
+    background-color: #f4faff;
+    padding: 8px 0 8px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inputText {
+    font-size: 14px;
+}
+
 .buttonDiv {
     cursor: pointer;
     font-size: 14px;
