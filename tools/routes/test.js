@@ -9,7 +9,10 @@ let challenge1 = {
     argumentsIDE: "x, y",
     functionName: "sumNumbers",
     challengeId: "1",
-    testCases: [{input: [1, 5], output: 6}, {input: [15, 20,], output: 35}],
+    testCases: [
+        {input: [2, 7], output: 9, inputString: "2 7", expectedOutputString: "9"},
+        {input: [10, 20,], output: 30, inputString: "10 20", expectedOutputString: "30"}
+        ],
     sampleOutput: ["6", "35"],
     sampleInput: ["1 5", "15 20"],
     outputFormat: ["Return a single integer, as represented on the two lines of the sample output with the given sample input respectively."],
@@ -26,6 +29,8 @@ let challenge2 = {
     testCases: [{input: [true], output: {testKey: true}}, {input: [false], output: {testKey: false}}],
     sampleInput: ["true", "false"],
     sampleOutput: ["{testKey: true}", "{testKey: false}"],
+    inputString: ["true", "false"],
+    outputString: ["{testKey: true}", "{testKey: false}"],
     inputFormat: ["The first line contains a boolean value representing the value the returnObjectTest function will take as input.",
         "The second line contains a boolean value representing the value the returnObjectTest function will take as input."],
     outputFormat: [`Return an object literal containing a single property with a key of "testKey" and a value of the boolean input, as represented on the lines of the sample output with the given sample input respectively.`],

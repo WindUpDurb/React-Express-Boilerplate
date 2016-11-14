@@ -49,18 +49,18 @@ module.exports = {
                     try {
                         assert.deepEqual(output, expectedOutput);
                     } catch (error) {
-                        evaluations.push({output, expectedOutput, result: "failed"});
+                        evaluations.push({output, expectedOutputString: testCases[i].expectedOutputString, inputString: testCases[i].inputString, expectedOutput, result: "failed"});
                         failedTest = true;
                         continue;
                     }
                     evaluations.push({output, expectedOutput, result: "passed"});
                 } else {
                     if (output !== expectedOutput) {
-                        evaluations.push({output, expectedOutput, result: "failed"});
+                        evaluations.push({output, expectedOutput, expectedOutputString: testCases[i].expectedOutputString, inputString: testCases[i].inputString, result: "failed"});
                         failedTest = true;
                         continue;
                     }
-                    evaluations.push({output, expectedOutput, result: "passed"});
+                    evaluations.push({output, expectedOutput, expectedOutputString: testCases[i].expectedOutputString, inputString: testCases[i].inputString, result: "passed"});
                 }
             }
         }());

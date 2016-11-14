@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import Codemirror from "react-codemirror";
 import {bindActionCreators} from "redux";
 import * as ChallengeActions from "../../actions/ChallengeActions";
+import {ProcessingCode} from "./ProcessingCode";
+import {RunResults} from "./RunResults";
 import "../../../node_modules/codemirror/lib/codemirror.css";
 import "../../../node_modules/codemirror/mode/javascript/javascript";
 
@@ -16,7 +18,8 @@ class IDEComponent extends React.Component {
         super(props);
 
         this.state = {
-            processingCode: true,
+            processingCode: false,
+            testResults: null,
             code: `function ${this.props.challengeDetails.functionName} (${this.props.challengeDetails.argumentsIDE}) {
 //construct your function below                
 
@@ -37,6 +40,7 @@ class IDEComponent extends React.Component {
     }
 
     runCode() {
+        this.setState({processingCode: true});
         let userSubmission = this.state.code,
             challengeDetails = this.props.challengeDetails,
             options = {
@@ -51,7 +55,9 @@ class IDEComponent extends React.Component {
                 return response.json();
             })
             .then(parsedResponse => {
-                console.log("parsed response: ", parsedResponse);
+                window.setTimeout(() => {
+                    this.setState({processingCode: false, testResults: parsedResponse});
+                }, 1500);
             })
     }
 
@@ -61,31 +67,35 @@ class IDEComponent extends React.Component {
 
 
     render() {
-        let challengeSuccess, failedChallenge, processingNotice, userErrorNotice, options = {lineNumbers: true, gutters: ["gutter"]};
-        // if (this.state.processingCode) processingNotice =
+        let runResults, processingNotice, options = {lineNumbers: true, gutters: ["gutter"]};
+        if (this.state.processingCode) processingNotice = <ProcessingCode/>;
+        if (this.state.testResults) runResults = <RunResults results={this.state.testResults}/>;
 
-        let resultsNotice = challengeSuccess || failedChallenge || userErrorNotice;
+        let resultsNotice = processingNotice || runResults;
 
 
 
         return (
-            <div style={{width: "800px", margin: "0 auto"}}>
-                <div className="divAboveIDE">
-                    <div style={{position: "absolute", left: "8px", paddingTop: "10px"}}>
-                        <span style={{fontSize: "15px", color: "#39424e", fontWeight: "bold"}}>Coding House Code Evaluator</span>
-                        <span style={{fontSize: "14px", color: "#767676"}}>  Javascript IDE</span>
-                    </div>
-                </div>
-              <Codemirror value={this.state.code} onChange={this.updateCode} options={options} />
-                <div className="divAroundSubmit">
-                    <div style={{paddingTop: "10px", position: "absolute", right: "25px"}}>
-                        <div onClick={this.runCode} className="buttonDiv">
-                            Run Code
-                        </div>
-                        <div style={{color: "white", border: "1px solid #f7c06b",  marginLeft: "15px", backgroundColor: "#f7c06b"}} className="buttonDiv">
-                            Submit
+            <div>
+                <div style={{width: "800px", margin: "0 auto", paddingBottom: "25px"}}>
+                    <div className="divAboveIDE">
+                        <div style={{position: "absolute", left: "8px", paddingTop: "10px"}}>
+                            <span style={{fontSize: "15px", color: "#39424e", fontWeight: "bold"}}>Coding House Code Evaluator</span>
+                            <span style={{fontSize: "14px", color: "#767676"}}>  Javascript IDE</span>
                         </div>
                     </div>
+                    <Codemirror value={this.state.code} onChange={this.updateCode} options={options} />
+                    <div className="divAroundSubmit">
+                        <div style={{paddingTop: "10px", position: "absolute", right: "25px"}}>
+                            <div onClick={this.runCode} className="buttonDiv">
+                                Run Code
+                            </div>
+                            <div style={{color: "white", border: "1px solid #f7c06b",  marginLeft: "15px", backgroundColor: "#f7c06b"}} className="buttonDiv">
+                                Submit
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
                 </div>
                 <br/>
                 {resultsNotice}
