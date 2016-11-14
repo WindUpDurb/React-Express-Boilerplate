@@ -66,6 +66,7 @@ class IDEComponent extends React.Component {
     }
 
 
+
     render() {
         let runResults, processingNotice, options = {lineNumbers: true, gutters: ["gutter"]};
         if (this.state.processingCode) processingNotice = <ProcessingCode/>;
