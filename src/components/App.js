@@ -1,6 +1,5 @@
 "use strict";
 import React, { PropTypes } from "react";
-import {bindActionCreators} from "redux";
 import ScrollToTop from "react-scroll-up";
 import {connect} from "react-redux";
 
