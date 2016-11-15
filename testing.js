@@ -49,11 +49,22 @@ module.exports = {
                     try {
                         assert.deepEqual(output, expectedOutput);
                     } catch (error) {
-                        evaluations.push({output, expectedOutputString: testCases[i].expectedOutputString, inputString: testCases[i].inputString, expectedOutput, result: "failed"});
+                        evaluations.push({
+                            expectedOutputString: testCases[i].expectedOutputString,
+                            inputString: testCases[i].inputString, expectedOutput,
+                            result: "failed",
+                            output: JSON.stringify(output)
+                        });
                         failedTest = true;
                         continue;
                     }
-                    evaluations.push({output, expectedOutput, result: "passed"});
+                    evaluations.push({
+                        expectedOutput,
+                        expectedOutputString: testCases[i].expectedOutputString,
+                        inputString: testCases[i].inputString,
+                        result: "failed",
+                        output: JSON.stringify(output)
+                    });
                 } else {
                     if (output !== expectedOutput) {
                         evaluations.push({output, expectedOutput, expectedOutputString: testCases[i].expectedOutputString, inputString: testCases[i].inputString, result: "failed"});

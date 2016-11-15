@@ -26,11 +26,12 @@ let challenge2 = {
     argumentsIDE: "boolean",
     functionName: "returnObjectTest",
     challengeId: "2",
-    testCases: [{input: [true], output: {testKey: true}}, {input: [false], output: {testKey: false}}],
+    testCases: [
+        {input: [true], output: {testKey: true}, inputString: "true", expectedOutputString: "{testKey: true}"},
+        {input: [false], output: {testKey: false}, inputString: "false", expectedOutputString: "{testKey: false}"}
+        ],
     sampleInput: ["true", "false"],
     sampleOutput: ["{testKey: true}", "{testKey: false}"],
-    inputString: ["true", "false"],
-    outputString: ["{testKey: true}", "{testKey: false}"],
     inputFormat: ["The first line contains a boolean value representing the value the returnObjectTest function will take as input.",
         "The second line contains a boolean value representing the value the returnObjectTest function will take as input."],
     outputFormat: [`Return an object literal containing a single property with a key of "testKey" and a value of the boolean input, as represented on the lines of the sample output with the given sample input respectively.`],

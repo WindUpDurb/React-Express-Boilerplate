@@ -88,10 +88,10 @@ class IDEComponent extends React.Component {
                     <Codemirror value={this.state.code} onChange={this.updateCode} options={options} />
                     <div className="divAroundSubmit">
                         <div style={{paddingTop: "10px", position: "absolute", right: "25px"}}>
-                            <div onClick={this.runCode} className="buttonDiv">
+                            <div onClick={this.runCode} className="buttonDiv runCodeButton">
                                 Run Code
                             </div>
-                            <div style={{color: "white", border: "1px solid #f7c06b",  marginLeft: "15px", backgroundColor: "#f7c06b"}} className="buttonDiv">
+                            <div className="buttonDiv submitButton">
                                 Submit
                             </div>
                         </div>
