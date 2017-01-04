@@ -44,7 +44,8 @@ export default {
         loaders: [
             //saying we want it to handle javascript and use babel to transpile
             {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-            {test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap")},
+            {test: /(\.css)$/, loaders: ['style', 'css']},
+            //{test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap")},
             //below is necessary for bootstrap
             {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
             {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
