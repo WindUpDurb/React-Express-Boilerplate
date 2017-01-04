@@ -13,8 +13,8 @@ class HomePage extends React.Component {
 
     render() {
         return (
-            <div>
-                Home
+            <div className="text-center">
+                home
             </div>
         );
     }
@@ -30,4 +30,10 @@ function mapStateToProps (state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(HomePage);
+function mapDispatchToProps(dispatch) {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

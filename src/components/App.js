@@ -15,9 +15,6 @@ class App extends React.Component {
         }
         return (
             <div>
-                <ScrollToTop showUnder={160}>
-                    <img src="/statics/scrollUp.png"/>
-                </ScrollToTop>
                 {loadingSpinner}
                 {this.props.children}
             </div>
